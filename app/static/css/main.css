@@ -2,6 +2,14 @@ header {
     margin-bottom: 35px;
 }
 
+body {
+    background-image: url("https://www.zastavki.com/pictures/1920x1080/2015/Finance_Wallpapers___Money_Cryptocurrency_coins_Bitcoin_106348_23.png");
+}
+
+h3, h5 {
+    color: white;
+}
+
 table {
     border-collapse: collapse;
     border: 1px solid black;
@@ -15,8 +23,3 @@ table.a {
     table-layout: auto;
     width: 100%;
 }
-/* 
-table.d {
-    table-layout: fixed;
-    width: 100%;
-} */

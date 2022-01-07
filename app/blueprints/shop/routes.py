@@ -32,6 +32,14 @@ def add_product(id):
     db.session.commit()
     flash('Product added successfully', 'success')
     return redirect(url_for('shop.index'))
+
+@shop.route('/cart/remove/<id>')
+def remove_product(id):
+    Cart.query.filter_by(product_key=str(id)).filter_by(
+        user_id=current_user.get_id()).delete()
+    db.session.commit()
+    flash('Product deleted successfully', 'success')
+    return redirect(url_for('shop.cart'))
     
 @shop.route('/cart')
 def cart():
@@ -66,8 +74,8 @@ def create_checkout_session():
             line_items=items,
             automatic_tax={'enabled': True},
             mode='payment',
-            success_url='http://localhost:5000/',
-            cancel_url='http://localhost:5000/',
+            success_url='http://localhost:5000/shop/success',
+            cancel_url='http://localhost:5000/shop/cancel',
         )
     except Exception as error:
         return str(error)
