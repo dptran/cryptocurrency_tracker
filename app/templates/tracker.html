@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div>
+        {% if current_user.is_authenticated %}
+        <h3>
+            Tracker List | {{ current_user.first_name }} {{ current_user.last_name }}
+        </h3>
+        <hr>
+
+        <form action="{{ url_for('api.add_tracker') }}" method="post">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="text" name="tracker_status" id="" class="form-control"
+                            placeholder="Type the name of the cryptocurrency that you would like to add to your list." aria-describedby="helpId" />
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" value="Post" class="btn btn-info btn-block" />
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <hr>
+
+        <ul class="list-group">
+            {% for p in tracker %}
+                <li class="list-group-item">
+                    <p><a href="{{ url_for('api.tracker') }}">{{ p.name }}</a></p>
+                    <p>
+                        <table class="table a table-bordered table-striped table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Price</th>
+                                    <th>Rank</th>
+                                    <th>Volume</th>
+                                    <th>Market Capitalization</th>
+                                    <th>Available Supply</th>
+                                    <th>Total Supply</th>
+                                    <th>Change 1 Hour</th>
+                                    <th>Change 1 Day</th>
+                                    <th>Change 1 Week</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ p.symbol }}</td>
+                                    <td>{{ p.price }}</td>
+                                    <td>{{ p.rank }}</td>
+                                    <td>{{ p.volume }}</td>
+                                    <td>{{ p.marketCap }}</td>
+                                    <td>{{ p.availableSupply }}</td>
+                                    <td>{{ p.totalSupply }}</td>
+                                    <td>{{ p.priceChange1h }}</td>
+                                    <td>{{ p.priceChange1d }}</td>
+                                    <td>{{ p.priceChange1w }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <h5>Please login to view your tracker list and/or add new items to your very own personal cryptocurrency tracker.</h5>
+        {% endif %}
+
+    </div>
+
+{% endblock content %}

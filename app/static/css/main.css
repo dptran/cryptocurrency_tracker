@@ -1,0 +1,22 @@
+header {
+    margin-bottom: 35px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th, td {
+    border: 1px solid black;
+}
+
+table.a {
+    table-layout: auto;
+    width: 100%;
+}
+/* 
+table.d {
+    table-layout: fixed;
+    width: 100%;
+} */
