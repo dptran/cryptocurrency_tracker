@@ -74,8 +74,8 @@ def create_checkout_session():
             line_items=items,
             automatic_tax={'enabled': True},
             mode='payment',
-            success_url='http://localhost:5000/shop/success',
-            cancel_url='http://localhost:5000/shop/cancel',
+            success_url='http://127.0.0.1:5000/shop/success.html',
+            cancel_url='http://127.0.0.1:5000/shop/cancel.html'
         )
     except Exception as error:
         return str(error)
