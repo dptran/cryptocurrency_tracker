@@ -8,7 +8,7 @@ from config import Config
 
 class TestConfig(Config):
     TESTING = True
-    SQLALCHEMY_DARABASE_URI = 'sqlite://'
+    SQLALCHEMY_DARABASE_URI = 'postgres://'
 
 class UserModelCase(unittest.TestCase):
     def setUp(self):
