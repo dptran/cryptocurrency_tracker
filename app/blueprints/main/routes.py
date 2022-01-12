@@ -13,7 +13,6 @@ def home():
         'first_name': 'Derek',
         'last_name': 'Hawkins',
         'email': 'derekhcodingtemple.com',
-        'posts': Post.query.order_by(Post.date_created.desc()).all()
     }
     return render_template('index.html', **context)
 
