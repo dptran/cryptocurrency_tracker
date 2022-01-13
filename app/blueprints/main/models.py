@@ -1,7 +1,5 @@
 from app import db
 from datetime import datetime as dt
-# from app import login_manager
-from flask_login import UserMixin
 
 class Post(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,5 +16,4 @@ class Post(UserMixin, db.Model):
             'date_created': self.date_created,
             'user': User.query.get(self.user_id).to_dict()
         }
-        # data['user'].extend()
         return data
